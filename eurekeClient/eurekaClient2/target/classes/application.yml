@@ -1,0 +1,14 @@
+server:
+  port: 8083
+
+eureka:
+  instance:
+    statusPageUrlPath: /info
+    healthCheckUrlPath: /health
+  client:
+    service-url:
+      defaultZone: http://localhost:7070/eureka
+
+spring:
+  application:
+    name: EurekaClient2
