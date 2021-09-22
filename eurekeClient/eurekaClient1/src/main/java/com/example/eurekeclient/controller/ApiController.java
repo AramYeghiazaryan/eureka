@@ -1,5 +1,6 @@
 package com.example.eurekeclient.controller;
 
+import com.example.eurekeclient.feign.ApiClient;
 import lombok.AllArgsConstructor;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
@@ -18,8 +19,8 @@ import java.text.MessageFormat;
 public class ApiController {
 
 
-    private ApiController apiController;
     private LoadBalancerClient loadBalancerClient;
+    private ApiClient apiClient;
 
     @PostMapping("/rest")
     public ResponseEntity<String> sendRequestToClient2(@RequestParam String param) {
@@ -31,6 +32,6 @@ public class ApiController {
 
     @PostMapping("/feign")
     public ResponseEntity<String> sendRequestToClient2WithFeign(@RequestParam String param) {
+        return apiClient.sendRequestToClient2(param);
     }
-
 }
